@@ -52,4 +52,4 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release \
     -DWITH_EIGEN=ON \
     -DEIGEN_INCLUDE_PATH=../../eigen/eigen3.3.5/ \
     .. && \
-	make -j && make install && ldconfig
+	make -j1 && make install && ldconfig
