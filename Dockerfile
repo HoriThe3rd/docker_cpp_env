@@ -21,7 +21,9 @@ RUN apt update && apt install -y \
     libjpeg-dev \
     libpng-dev \
     libtiff-dev \
-    libdc1394-22-dev
+    libdc1394-22-dev \
+	&& apt clean \
+	&& rm -rf /var/lib/apt/lists/*
 
 # Download opencv sources
 RUN mkdir -p /usr/local/src/opencv
@@ -53,3 +55,4 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release \
     -DEIGEN_INCLUDE_PATH=../../eigen/eigen3.3.5/ \
     .. && \
 	make -j1 && make install && ldconfig
+RUN rm -rf /usr/local/src/opencv/opencv-3.4.3 && rm -rf /usr/local/src/opencv/opencv_contrib-3.4.3
